@@ -25,7 +25,7 @@ export default class PostsService {
   }
 
   async createPost(post: CreatePostDto) {
-    const newPost = await this.postsRepository.create(post);
+    const newPost = this.postsRepository.create(post);
     await this.postsRepository.save(newPost);
     return newPost;
   }
