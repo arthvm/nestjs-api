@@ -12,6 +12,7 @@ import CreatePostDto from './dto/create-post.dto';
 import UpdatePostDto from './dto/update-post.dto';
 import PostsService from './posts.service';
 import JwtAuthenticationGuard from 'src/authentication/jwt-authentication.guard';
+import { FindOneParams } from 'src/utils/find-one-params';
 
 @Controller('posts')
 export default class PostController {
@@ -23,7 +24,7 @@ export default class PostController {
   }
 
   @Get(':id')
-  getPostsById(@Param('id') id: string) {
+  getPostsById(@Param() { id }: FindOneParams) {
     return this.postsService.getPostById(Number(id));
   }
 
